@@ -2,7 +2,8 @@
 using namespace std;
 
 const int row = 10, col = 10;
-char FleetBoard[row][col];
+char MyBattleShips[row][col];
+char opponentBattleShips[row][col];
 
 void printMyBattleShips()
 {
@@ -10,20 +11,20 @@ void printMyBattleShips()
 
     for (int i = 0; i < col; i++)
     {
-        FleetBoard[0][i + 1] = i + '1';
+        MyBattleShips[0][i + 1] = i + '1';
     }
 
     int num = 65;
     for (int i = 1; i < row; i++)
     {
-        FleetBoard[i][0] = char(num++);
+        MyBattleShips[i][0] = char(num++);
     }
 
     for (int i = 1; i < row; i++)
     {
         for (int j = 1; j < col; j++)
         {
-            FleetBoard[i][j] = '-';
+            MyBattleShips[i][j] = '-';
         }
     }
 
@@ -31,11 +32,47 @@ void printMyBattleShips()
     {
         for (int j = 0; j < col; j++)
         {
-            cout << FleetBoard[i][j] << "   ";
+            cout << MyBattleShips[i][j] << "   ";
         }
         cout << endl << endl;
     }
 }
+
+void printOpponentBattleship()
+{
+    cout << "      " << "OPPONENTS BATTLESHIPS" << "   " << endl;
+
+    for (int i = 0; i < col; i++)
+    {
+        opponentBattleShips[0][i + 1] = i + '1';
+    }
+
+    int num = 65;
+    for (int i = 1; i < row; i++)
+    {
+        opponentBattleShips[i][0] = char(num++);
+    }
+
+    for (int i = 1; i < row; i++)
+    {
+        for (int j = 1; j < col; j++)
+        {
+            opponentBattleShips[i][j] = '-';
+        }
+    }
+
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++)
+        {
+            cout << opponentBattleShips[i][j] << "   ";
+        }
+        cout << endl << endl;
+    }
+}
+
+
+
 
 void enterAircraftCarrier()
 {
@@ -58,7 +95,7 @@ void enterAircraftCarrier()
         
         if (x >= 1 && x <= 10 && yIndex >= 1 && yIndex <= 10) 
         {
-            FleetBoard[yIndex][x] = 'A';  
+            MyBattleShips[yIndex][x] = 'A';  
         } else 
         {
             cout << "Invalid coordinates, please enter again!" << endl;
@@ -92,7 +129,7 @@ void enterBattleship()
         
         if (x >= 1 && x <= 10 && yIndex >= 1 && yIndex <= 10) 
         {
-            FleetBoard[yIndex][x] = 'B';  
+            MyBattleShips[yIndex][x] = 'B';  
         } else 
         {
             cout << "Invalid coordinates, please enter again!" << endl;
@@ -126,7 +163,7 @@ void enterSubmarine()
         
         if (x >= 1 && x <= 10 && yIndex >= 1 && yIndex <= 10) 
         {
-            FleetBoard[yIndex][x] = 'S';  
+            MyBattleShips[yIndex][x] = 'S';  
         } else 
         {
             cout << "Invalid coordinates, please enter again!" << endl;
@@ -160,7 +197,7 @@ void enterCruiser()
         
         if (x >= 1 && x <= 10 && yIndex >= 1 && yIndex <= 10) 
         {
-            FleetBoard[yIndex][x] = 'C';  
+            MyBattleShips[yIndex][x] = 'C';  
         } else 
         {
             cout << "Invalid coordinates, please enter again!" << endl;
@@ -194,7 +231,7 @@ void enterDestroyer()
         
         if (x >= 1 && x <= 10 && yIndex >= 1 && yIndex <= 10) 
         {
-            FleetBoard[yIndex][x] = 'D';  
+            MyBattleShips[yIndex][x] = 'D';  
         } else 
         {
             cout << "Invalid coordinates, please enter again!" << endl;
@@ -211,6 +248,7 @@ void enterDestroyer()
 int main()
 {
     printMyBattleShips();
+    printOpponentBattleship();
     enterAircraftCarrier();
     enterBattleship();
     enterSubmarine();
@@ -221,9 +259,12 @@ int main()
     {
         for (int j = 0; j < col; j++)
         {
-            cout << FleetBoard[i][j] << "   ";
+            cout << MyBattleShips[i][j] << "   ";
         }
         cout << endl << endl;
     }
+
+
+    
 
 }
